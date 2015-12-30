@@ -63,9 +63,10 @@
   <gap:splash src="www/res/screen/windows-phone/screen-portrait.jpg" gap:platform="winphone"/>
   <access origin="*"/>
   <plugin name="cordova-plugin-whitelist" version="1"/>
+<plugin name="cordova-plugin-whitelist" spec="1.2.0" />
 <plugin name="org.apache.cordova.battery-status" source="pgb" spec="0.2.12" />
 <plugin name="org.apache.cordova.camera" source="pgb" spec="0.3.6" />
-<plugin name="org.apache.cordova.console" source="pgb" spec="n/a" />
+<plugin name="org.apache.cordova.console" source="pgb" spec="0.2.13" />
 <plugin name="org.apache.cordova.contacts" source="pgb" spec="0.2.16" />
 <plugin name="org.apache.cordova.device" source="pgb" spec="0.3.0" />
 <plugin name="org.apache.cordova.device-motion" source="pgb" spec="0.2.11" />
