@@ -8,11 +8,8 @@
 		<div style="width: 50%">
 			<canvas id="canvas" height="450" width="600"></canvas>
 		</div>
-
-
 	<script>
 	var randomScalingFactor = function(){ return Math.round(Math.random()*100)};
-
 	var barChartData = {
 		labels : ["January","February","March","April","May","June","July"],
 		datasets : [
@@ -31,7 +28,6 @@
 				data : [randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor()]
 			}
 		]
-
 	}
 	window.onload = function(){
 		var ctx = document.getElementById("canvas").getContext("2d");
@@ -39,7 +35,6 @@
 			responsive : true
 		});
 	}
-
 	</script>
 	</body>
 </html>
