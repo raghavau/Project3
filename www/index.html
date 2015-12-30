@@ -12,7 +12,7 @@
         
     </head>
     <body>
-        <div class="app">
+        <div id="containerId" class="app">
             <h1>PhoneGap</h1>
             <div id="deviceready" class="blink">
                 <p class="event listening">Connecting to Device</p>
@@ -37,6 +37,18 @@
                 });
                 $("#btnbarpage").click(function (){
                    $(location).attr('href',barurl); 
+                });
+                var con=document.getElementById('containerId');
+
+                con.addEventListener('gesturechange',function(e){
+                    if(e.scale>1)
+                    {
+                        //zoom in 
+                    }
+                    else if(e.scale<1)
+                    {
+                        //zoom out 
+                    }
                 });
             });
         </script>
