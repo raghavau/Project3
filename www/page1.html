@@ -63,4 +63,13 @@
     <script type="text/javascript" src="js/index.js"></script>
     <script type="text/javascript" src="js/jquery-1.10.2.js"></script>
     <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/hammer.min.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function(){
+        var hammertime = new Hammer(myElement, myOptions);
+        hammertime.on('pan', function(ev) {
+            console.log(ev);
+        });
+    });
+    </script>
 </html>
