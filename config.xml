@@ -1,6 +1,6 @@
 <widget xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0" id="com.kpcl.helloworld" version="1.0.43">
   <name>KPCL</name>
-  <description>Hello World sample application that responds to the deviceready event.</description>
+  <description>Sample Application developing for Krishnapatnam Port Company Ltd.</description>
   <author href="http://www.krishnapatnamport.com" email="support@krishnapatnamport.com">KPCL IT Team</author>
   <content src="page1.html"/>
   <preference name="permissions" value="none"/>
