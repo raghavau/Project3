@@ -70,7 +70,7 @@
   <allow-intent href="sms:*"/>
   <allow-intent href="mailto:*"/>
   <allow-intent href="geo:*"/>
-  <platform name="android">
+  <!--<platform name="android">
     <allow-intent href="market:*"/>
   </platform>
   <platform name="ios">
@@ -78,5 +78,5 @@
     <allow-intent href="itms-apps:*"/>
   </platform>
   <platform name="winphone" />
-    <platform name="blackberry" />
+    <platform name="blackberry" />-->
 </widget>
