@@ -1,41 +1,78 @@
-<!DOCUTYPE html>
-<html>
-    <head>
-        <title>jQuery Grid</title>
-        <meta charset="utf-8" />
-        <meta name="format-detection" content="telephone=no" />
-        <meta name="msapplication-tap-highlight" content="no" />
-        <meta name="viewport" content="user-scalable=true, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height" />
-        <script type="text/ecmascript" src="js/jquery.min.js"></script>
-        <script type="text/ecmascript" src="js/jquery.jqGrid.min.js"></script>
-        <script type="text/ecmascript" src="js/grid.locale-en.js"></script>
-        <link rel="stylesheet" type="text/css" media="screen" href="css/jquery-ui.css" />
-        <link rel="stylesheet" type="text/css" media="screen" href="css/ui.jqgrid.css" />
-    </head>
-    <body>
-        <table id="jqGrid"></table>
-        <div id="jqGridPager"></div>
-        <script type="text/javascript">
-            $(document).ready(function () {
-                    $("#jqGrid").jqGrid({
-                    url: 'data.json',
-                    datatype: "json",
-                     colModel: [
-                        { label: 'Category Name', name: 'CategoryName', width: 75 },
-                        { label: 'Product Name', name: 'ProductName', width: 90 },
-                        { label: 'Country', name: 'Country', width: 100 },
-                        { label: 'Price', name: 'Price', width: 80, sorttype: 'integer' },
-                        // sorttype is used only if the data is loaded locally or loadonce is set to true
-                        { label: 'Quantity', name: 'Quantity', width: 80, sorttype: 'number' }                   
-                    ],
-                    viewrecords: true, // show the current page, data rang and total records on the toolbar
-                    width: 780,
-                    height: 200,
-                    rowNum: 30,
-                    loadonce: true, // this is just for the demo
-                    pager: "#jqGridPager"
-                });
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>Grid populated from Array.</title>
+    <link rel="stylesheet" href="jqwidgets/styles/jqx.base.css" type="text/css" />
+    <script type="text/javascript" src="js/jquery1.11.1-min.js"></script>
+    <script type="text/javascript" src="jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="jqwidgets/jqxscrollbar.js"></script>
+    <script type="text/javascript" src="jqwidgets/jqxmenu.js"></script>
+    <script type="text/javascript" src="jqwidgets/jqxgrid.js"></script>
+    <script type="text/javascript" src="jqwidgets/jqxgrid.selection.js"></script>
+    <script type="text/javascript" src="jqwidgets/jqxdata.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            // prepare the data
+            var data = new Array();
+            var firstNames =
+            [
+                "Andrew", "Nancy", "Shelley", "Regina", "Yoshi", "Antoni", "Mayumi", "Ian", "Peter", "Lars", "Petra", "Martin", "Sven", "Elio", "Beate", "Cheryl", "Michael", "Guylene"
+            ];
+            var lastNames =
+            [
+                "Fuller", "Davolio", "Burke", "Murphy", "Nagase", "Saavedra", "Ohno", "Devling", "Wilson", "Peterson", "Winkler", "Bein", "Petersen", "Rossi", "Vileid", "Saylor", "Bjorn", "Nodier"
+            ];
+            var productNames =
+            [
+                "Black Tea", "Green Tea", "Caffe Espresso", "Doubleshot Espresso", "Caffe Latte", "White Chocolate Mocha", "Cramel Latte", "Caffe Americano", "Cappuccino", "Espresso Truffle", "Espresso con Panna", "Peppermint Mocha Twist"
+            ];
+            var priceValues =
+            [
+                "2.25", "1.5", "3.0", "3.3", "4.5", "3.6", "3.8", "2.5", "5.0", "1.75", "3.25", "4.0"
+            ];
+            for (var i = 0; i < 50; i++) {
+                var row = {};
+                var productindex = Math.floor(Math.random() * productNames.length);
+                var price = parseFloat(priceValues[productindex]);
+                var quantity = 1 + Math.round(Math.random() * 10);
+                row["firstname"] = firstNames[Math.floor(Math.random() * firstNames.length)];
+                row["lastname"] = lastNames[Math.floor(Math.random() * lastNames.length)];
+                row["productname"] = productNames[productindex];
+                row["price"] = price;
+                row["quantity"] = quantity;
+                row["total"] = price * quantity;
+                data[i] = row;
+            }
+            var source =
+            {
+                localdata: data,
+                datatype: "array"
+            };
+            var dataAdapter = new $.jqx.dataAdapter(source, {
+                downloadComplete: function (data, status, xhr) { },
+                loadComplete: function (data) { },
+                loadError: function (xhr, status, error) { }
             });
-        </script>
-    </body>
+            $("#jqxgrid").jqxGrid(
+            {
+                width: 670,
+                source: dataAdapter,
+                columns: [
+                  { text: 'First Name', datafield: 'firstname', width: 100 },
+                  { text: 'Last Name', datafield: 'lastname', width: 100 },
+                  { text: 'Product', datafield: 'productname', width: 180 },
+                  { text: 'Quantity', datafield: 'quantity', width: 80, cellsalign: 'right' },
+                  { text: 'Unit Price', datafield: 'price', width: 90, cellsalign: 'right', cellsformat: 'c2' },
+                  { text: 'Total', datafield: 'total', width: 100, cellsalign: 'right', cellsformat: 'c2' }
+                ]
+            });
+        });
+    </script>
+</head>
+<body class='default'>
+    <div id='jqxWidget' style="font-size: 13px; font-family: Verdana; float: left;">
+        <div id="jqxgrid"></div>
+    </div>
+</body>
 </html>
