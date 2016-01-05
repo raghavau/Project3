@@ -1,54 +1,28 @@
-<!DOCTYPE html>
+<!DOCUMENT html>
 <html>
     <head>
+        <title>KPCL-Index</title>
         <meta charset="utf-8" />
         <meta name="format-detection" content="telephone=no" />
         <meta name="msapplication-tap-highlight" content="no" />
         <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
         <meta name="viewport" content="user-scalable=true, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
-        <link rel="stylesheet" type="text/css" href="css/index.css" />
-        <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">
-        <title>Hello World</title>        
+        <link type="text/css" href="css/index.css" rel="stylesheet">
+        <link type="text/css" href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
     </head>
     <body>
         <div id="containerId" class="app">
             <h1>PhoneGap</h1>
             <div id="deviceready" class="blink">
-                <p class="event listening">Connecting to Device</p>
+                <p class="event listening">Connecting to Device...</p>
                 <p class="event received">Device Connected</p>
+                <p class="event received">Redirecting to new page. Please wait.</p>
             </div>
-            <br>
-            <button type = "button" class = "btn btn-success" id="btnbspage">Redirect to Bootstrap Page</button> | 
-            <button type = "button" class = "btn btn-success" id="btnbarpage">Redirect to Bar Chart Page</button>
         </div>
         <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
-        <script type="text/javascript" src="js/jquery-1.10.2.js"></script>
-        <script type="text/javascript" src="js/jquery1.11.1-min.js"></script>
-        <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
         <script type="text/javascript">
             app.initialize();
-            $(document).ready(function(){
-                var bsurl='bsfirst.html';
-                var barurl='bar.html';
-                $("#btnbspage").click(function (){
-                   $(location).attr('href',bsurl); 
-                });
-                $("#btnbarpage").click(function (){
-                   $(location).attr('href',barurl); 
-                });
-                var con=document.getElementById('containerId');
-                con.addEventListener('gesturechange',function(e){
-                    if(e.scale>1)
-                    {
-                        //zoom in 
-                    }
-                    else if(e.scale<1)
-                    {
-                        //zoom out 
-                    }
-                });
-            });
         </script>
     </body>
 </html>
