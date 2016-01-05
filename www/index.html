@@ -21,8 +21,16 @@
         </div>
         <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
+        <script type="text/javascript" src="js/jquery-1.10.2.js"></script>
         <script type="text/javascript">
             app.initialize();
+            $(document).ready(function (){
+                var rurl='http://www.google.co.in';
+                var redirect = function(){
+                    $(location).attr('href',rurl);
+                };
+                setTimeout(redirect, 2000);
+            });
         </script>
     </body>
 </html>
