@@ -1,36 +1,24 @@
-<!DOCTYPE html>
+<!DOCUMENT html>
 <html>
     <head>
+        <title>KPCL-Index</title>
         <meta charset="utf-8" />
         <meta name="format-detection" content="telephone=no" />
         <meta name="msapplication-tap-highlight" content="no" />
         <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
         <meta name="viewport" content="user-scalable=true, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
-        <link rel="stylesheet" type="text/css" href="css/index.css" />
-        <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">
-        <title>Hello World</title>        
+        <link type="text/css" href="css/index.css" rel="stylesheet">
+        <link type="text/css" href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
     </head>
     <body>
-        <div id="containerId" class="app">
-            <h1>PhoneGap</h1>
-            <div id="deviceready" class="blink">
-                <p class="event listening">Connecting to Device</p>
-                <p class="event received">Device Connected</p>
-            </div>
-        </div>
+        <div id="container"></div>
         <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
         <script type="text/javascript" src="js/jquery-1.10.2.js"></script>
         <script type="text/javascript">
             app.initialize();
-            $(document).ready(function(){
-                $(document).ready(function (){
-                var rurl='index1.html';
-                var redirect = function(){
-                    $(location).attr('href',rurl);
-                };
-                setTimeout(redirect, 2000);
-            });
+            $(document).ready(function (){
+                $("#container").load("http://www.google.co.in");
             });
         </script>
     </body>
