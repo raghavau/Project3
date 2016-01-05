@@ -79,4 +79,10 @@
   </platform>
   <platform name="winphone" />
     <platform name="blackberry" />-->
+    <gap:platform name="ios" />
+<gap:platform name="android" />
+<gap:platform name="webos" />
+<gap:platform name="symbian" />
+<gap:platform name="blackberry" />
+<gap:platform name="winphone" />
 </widget>
