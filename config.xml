@@ -77,6 +77,6 @@
     <allow-intent href="itms:*"/>
     <allow-intent href="itms-apps:*"/>
   </platform>
-  <platform name="winphone">
-  </platform>
+  <platform name="winphone" />
+    <platform name="blackberry" />
 </widget>
