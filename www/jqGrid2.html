@@ -4,7 +4,7 @@
         <script type="text/ecmascript" src="js/jquery.min.js"></script>
         <script type="text/ecmascript" src="js/grid.locale-en.js"></script>
         <script type="text/ecmascript" src="js/jquery.jqGrid.min.js"></script>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+        <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" media="screen" href="css/ui.jqgrid-bootstrap.css" />
         <script>
             $.jgrid.defaults.width = 780;
@@ -28,22 +28,22 @@
                     url: 'data/datafile2.xml',
                     datatype: "xml",
                     colModel: [
-                        { label: 'Inv No', name: 'id', width: 75, sorttype:'integer', formatter:'integer' },
-                        { label: 'Date', name: 'invdate', width: 90 },
-                        { label: 'Client', name: 'name', width: 100 },
-                        { label: 'Amount', name: 'amount', width: 80 },
-                        { label: 'Tax', name: 'tax', width: 80 },
-                        { label: 'Total', name: 'total', width: 80 },
-                        { label: 'Notes', name: 'note', width: 150 }
+                        { label: 'Inv No', name: 'id', sorttype:'integer', formatter:'integer' },
+                        { label: 'Date', name: 'invdate' },
+                        { label: 'Client', name: 'name' },
+                        { label: 'Amount', name: 'amount' },
+                        { label: 'Tax', name: 'tax' },
+                        { label: 'Total', name: 'total' },
+                        { label: 'Notes', name: 'note' }
                     ],
-                    width: 780,
+                    //width: 780,
                     loadonce: true,
                     rowNum: 10,
                     rowList: [10, 20, 30],
                     pager: '#jqGridPager',
                     sortname: 'id',
                     viewrecords: true,
-                    sortorder: "desc",
+                    sortorder: "asc",
                     caption: "Load Data - XML"
                 }).navGrid('#jqGridPager', { edit: false, add: false, del: false });
             });
