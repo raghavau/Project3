@@ -18,13 +18,13 @@
         <title>jqGrid Loading Data - XML</title>
     </head>
     <body>
-        <!--<div style="margin-left:20px">-->
-        <div id="page" data-role="page" data-theme="a">
+        <div style="margin-left:20px">
             <table id="jqGrid"></table>
             <div id="jqGridPager"></div>
-        <!--</div>-->
+        </div>
         <script type="text/javascript"> 
             $(document).ready(function () {
+                var clntHeight = parseFloat(document.documentElement.clientHeight) - 140;
                 $("#jqGrid").jqGrid({
                     url: 'data/datafile2.xml',
                     datatype: "xml",
@@ -38,6 +38,7 @@
                         { label: 'Notes', name: 'note' }
                     ],
                     //width: 780,
+                    height: clntHeight,
                     loadonce: true,
                     rowNum: 10,
                     rowList: [10, 20, 30],
@@ -49,6 +50,5 @@
                 }).navGrid('#jqGridPager', { edit: false, add: false, del: false });
             });
         </script>
-        </div>
     </body>
 </html>
