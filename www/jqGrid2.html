@@ -18,10 +18,11 @@
         <title>jqGrid Loading Data - XML</title>
     </head>
     <body>
-        <div style="margin-left:20px">
+        <!--<div style="margin-left:20px">-->
+        <div id="page" data-role="page" data-theme="a">
             <table id="jqGrid"></table>
             <div id="jqGridPager"></div>
-        </div>
+        <!--</div>-->
         <script type="text/javascript"> 
             $(document).ready(function () {
                 $("#jqGrid").jqGrid({
@@ -47,6 +48,7 @@
                     caption: "Load Data - XML"
                 }).navGrid('#jqGridPager', { edit: false, add: false, del: false });
             });
-          </script>
+        </script>
+        </div>
     </body>
 </html>
