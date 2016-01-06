@@ -24,32 +24,6 @@
         </div>
         <script type="text/javascript"> 
             var clntHeight = parseFloat(document.documentElement.clientHeight) - 140;
-            $(window).resize(function () {
-                clntHeight = parseFloat(document.documentElement.clientHeight) - 140;
-                $("#jqGrid").jqGrid({
-                    url: 'data/datafile2.xml',
-                    datatype: "xml",
-                    colModel: [
-                        { label: 'Inv No', name: 'id', sorttype:'integer', formatter:'integer' },
-                        { label: 'Date', name: 'invdate' },
-                        { label: 'Client', name: 'name' },
-                        { label: 'Amount', name: 'amount' },
-                        { label: 'Tax', name: 'tax' },
-                        { label: 'Total', name: 'total' },
-                        { label: 'Notes', name: 'note' }
-                    ],
-                    //width: 780,
-                    height: clntHeight,
-                    loadonce: true,
-                    rowNum: 10,
-                    rowList: [10, 20, 30],
-                    pager: '#jqGridPager',
-                    sortname: 'id',
-                    viewrecords: true,
-                    sortorder: "asc",
-                    caption: "Load Data - XML"
-                }).navGrid('#jqGridPager', { edit: false, add: false, del: false });
-            });
             $(document).ready(function () {
                 $("#jqGrid").jqGrid({
                     url: 'data/datafile2.xml',
