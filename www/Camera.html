@@ -69,7 +69,7 @@
             function capturePhoto() {
               // Take picture using device camera and retrieve image as base64-encoded string
               navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 50,
-                destinationType: destinationType.DATA_URL });
+                destinationType: destinationType.DATA_URL, FRONT: 1 });
             }
 
             // A button will call this function
@@ -115,7 +115,7 @@
                     <span class="glyphicon glyphicon-camera"></span>
                 </button>
             <!--</div>-->
-            <img style="display:none;width:60px;height:60px;" id="smallImage" src="" />
+            <img style="display:none;width: 100%;height:200px;" id="smallImage" src="" />
             <img style="display:none;" id="largeImage" src="" />
         </div>
     </body>
