@@ -1,7 +1,7 @@
 <widget xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0" id="com.project3.containersearch" version="1.0.5">
-  <name>Project3</name>
-  <description>Sample Project 3</description>
-  <author href="http://www.krishnapatnamport.com" email="support@krishnapatnamport.com">KPCL IT Team</author>
+  <name>My Cam</name>
+  <description>Sample Camera</description>
+  <author href="http://raghavau.blogspot.com" email="raghava.u@gmail.com">IT Professional</author>
   <content src="Camera.html"/>
   <preference name="permissions" value="none"/>
   <preference name="orientation" value="default"/>
