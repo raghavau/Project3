@@ -9,13 +9,14 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
         <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+        <script src = "http://maps.googleapis.com/maps/api/js"></script>
         <script type="text/javascript" charset="utf-8">
             var pictureSource;   // picture source
             var destinationType; // sets the format of returned value
 
             // Wait for device API libraries to load
             //
-            document.addEventListener("deviceready",onDeviceReady,false);
+            document.addEventListener("deviceready", onDeviceReady, false);
 
             // device APIs are available
             //
@@ -94,27 +95,102 @@
             function onFail(message) {
               alert('Failed because: ' + message);
             }
+            
+            function showLocation(position) {
+                var latitude = position.coords.latitude;
+                var longitude = position.coords.longitude;
+                $("#txtLat").val(latitude);
+                $("#txtLong").val(longitude);
+                //alert("Latitude : " + latitude + " Longitude: " + longitude);
+            }
+
+            function errorHandler(err) {
+                if(err.code == 1) {
+                    alert("Error: Access is denied!");
+                }
+                else if( err.code == 2) {
+                    alert("Error: Position is unavailable!");
+                }
+            }
+
+            function getLocation(){
+                if(navigator.geolocation){
+                    // timeout at 60000 milliseconds (60 seconds)
+                    var options = {timeout:60000};
+                    navigator.geolocation.getCurrentPosition(showLocation, errorHandler, options);
+                }
+                else{
+                    alert("Sorry, browser does not support geolocation!");
+                }
+            }
+            
+            function loadMap() {
+                var latitude = $("#txtLat").val();
+                var longitude = $("#txtLong").val();
+                var mapOptions = {
+                    center:new google.maps.LatLng(latitude, longitude), zoom:12,
+                    mapTypeId:google.maps.MapTypeId.ROADMAP
+                };				
+                var map = new google.maps.Map(document.getElementById("sample"),mapOptions);
+                var marker = new google.maps.Marker({
+                    position: new google.maps.LatLng(latitude, longitude),
+                    map: map,
+                });
+            }
+            
+            $(document).ready(function (){
+                if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+                    $("#lblDeviceType").html("Mobile Device");
+                }
+                else{
+                    $("#lblDeviceType").html("Other than Mobile Device");
+                }
+                
+                $("#btnLocation").click(function(){
+                    getLocation();
+                    loadMap();
+                });
+            });
         </script>
     </head>
     <body>
         <div class="container">
             <div class="page-header">
-                <h3>Capture and Edit Picture</h3>
+                <h3>Capture and Locate</h3>
             </div>
-            <!--<div class="btn-group-vertical btn-group-md">-->
-                <button class="btn btn-info btn-block btn-lg" onclick="capturePhoto();">Capture Photo
-                    <span class="glyphicon glyphicon-camera"></span>
-                </button>
-                <button class="btn btn-info btn-block btn-lg" onclick="capturePhotoEdit();">Capture Editable Photo
-                    <span class="glyphicon glyphicon-camera"></span>
-                </button>
-                <button class="btn btn-info btn-block btn-lg" onclick="getPhoto(pictureSource.PHOTOLIBRARY);">From Photo Library
-                    <span class="glyphicon glyphicon-camera"></span>
-                </button>
-                <button class="btn btn-info btn-block btn-lg" onclick="getPhoto(pictureSource.SAVEDPHOTOALBUM);">From Photo Album
-                    <span class="glyphicon glyphicon-camera"></span>
-                </button>
-            <!--</div>-->
+            <div class="well" style="padding: 10px 50px;">
+                <code>
+                    <span id="lblDeviceType"></span>
+                </code>            
+                <!--<div class="btn-group-vertical btn-group-md">-->
+                    <button class="btn btn-info btn-block btn-lg" onclick="capturePhoto();">Capture Photo
+                        <span class="glyphicon glyphicon-camera"></span>
+                    </button>
+                    <!--<button class="btn btn-info btn-block btn-lg" onclick="capturePhotoEdit();">Capture Editable Photo
+                        <span class="glyphicon glyphicon-camera"></span>
+                    </button>
+                    <button class="btn btn-info btn-block btn-lg" onclick="getPhoto(pictureSource.PHOTOLIBRARY);">From Photo Library
+                        <span class="glyphicon glyphicon-camera"></span>
+                    </button>
+                    <button class="btn btn-info btn-block btn-lg" onclick="getPhoto(pictureSource.SAVEDPHOTOALBUM);">From Photo Album
+                        <span class="glyphicon glyphicon-camera"></span>
+                    </button>-->
+                    <button class="btn btn-info btn-block btn-lg" id="btnLocation">Get Location
+                        <span class="glyphicon glyphicon-map-marker"></span>
+                    </button>
+                <!--</div>-->            
+                <form class="form-horizontal" role="form" style="padding: 10px;">
+                    <div class="form-group">
+                        <label for="txtLat" class="control-label">Latitude</label>
+                        <input type="text" class="form-control" id="txtLat">
+                    </div>
+                    <div class="form-group">
+                        <label for="txtLong" class="control-label">Longitude</label>
+                        <input type="text" class="form-control" id="txtLong">
+                    </div>
+                    <div id="sample" style="width: 100%; height: 300px;"></div>
+                </form>
+            </div>
             <img style="display:none;width: 100%;height:200px;" id="smallImage" src="" />
             <img style="display:none;" id="largeImage" src="" />
         </div>
